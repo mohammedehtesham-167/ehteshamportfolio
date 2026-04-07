@@ -289,6 +289,22 @@
 
   cards.forEach(card => observer.observe(card));
 </script>
+<!-- CHAT BUTTON -->
+<div class="chat-button" onclick="toggleChat()">💬</div>
 
+<!-- CHAT BOX -->
+<div id="chatbox" class="chatbox">
+  <div class="chat-header">
+    <span>Chat with me</span>
+    <button onclick="toggleChat()">✖</button>
+  </div>
+
+  <div id="chat-messages" class="chat-messages"></div>
+
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
 </body>
 </html>
