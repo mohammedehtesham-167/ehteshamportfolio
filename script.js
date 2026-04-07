@@ -1,27 +1,3 @@
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({
-    behavior: "smooth"
-  });
-}
-
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
-}
-
-/* SCROLL ANIMATION */
-const cards = document.querySelectorAll(".card");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.1 });
-
-cards.forEach(card => observer.observe(card));
-
-/* CHATBOX */
 function toggleChat() {
   const chat = document.getElementById("chatbox");
 
@@ -34,27 +10,43 @@ function toggleChat() {
 
 function sendMessage() {
   const input = document.getElementById("user-input");
-  const message = input.value.trim();
-  if (!message) return;
+  const msg = input.value.toLowerCase().trim();
+
+  if (!msg) return;
 
   const chat = document.getElementById("chat-messages");
 
-  chat.innerHTML += `<div><strong>You:</strong> ${message}</div>`;
+  // USER MESSAGE
+  chat.innerHTML += `<div><b>You:</b> ${msg}</div>`;
 
-  let reply = "Thanks for reaching out!";
+  let reply = "I didn’t understand that. Try asking about my skills, email, or education.";
 
-  if (message.toLowerCase().includes("email")) {
-    reply = "You can contact me at: mohammedehtesham1901@gmail.com";
-  } 
-  else if (message.toLowerCase().includes("phone")) {
-    reply = "Call me at: +1 773 739 7618";
-  } 
-  else if (message.toLowerCase().includes("linkedin")) {
-    reply = "Check my LinkedIn in the contact section.";
+  // SMART REPLIES ABOUT YOU
+  if (msg.includes("name")) {
+    reply = "My name is Ehtesham Jawid Mohammed.";
+  }
+  else if (msg.includes("email")) {
+    reply = "You can email me at mohammedehtesham1901@gmail.com";
+  }
+  else if (msg.includes("phone")) {
+    reply = "My phone number is +1 773 739 7618";
+  }
+  else if (msg.includes("skills")) {
+    reply = "I have skills in Data Analysis, SQL, Power BI, Tableau, Excel, and Business Analysis.";
+  }
+  else if (msg.includes("education")) {
+    reply = "I am pursuing Masters in Business Analytics at Avila University and completed BBA from Osmania University.";
+  }
+  else if (msg.includes("linkedin")) {
+    reply = "You can find my LinkedIn in the contact section.";
+  }
+  else if (msg.includes("github")) {
+    reply = "Check my GitHub profile in the contact section.";
   }
 
+  // BOT REPLY
   setTimeout(() => {
-    chat.innerHTML += `<div><strong>Me:</strong> ${reply}</div>`;
+    chat.innerHTML += `<div><b>Me:</b> ${reply}</div>`;
     chat.scrollTop = chat.scrollHeight;
   }, 500);
 
