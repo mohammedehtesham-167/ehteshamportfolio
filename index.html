@@ -5,122 +5,183 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ehtesham Jawid Mohammed | Portfolio</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      padding: 40px 0;
+    }
+
+    .card {
+      background: #020617;
+      padding: 30px;
+      margin-bottom: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h1, h2 {
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #38bdf8;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #cbd5f5;
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .skills span {
+      display: inline-block;
+      background: #1e293b;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin: 5px;
+      font-size: 14px;
+    }
+
+    .projects .project-card {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+  </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="logo">Ehtesham Jawid Mohammed</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#publications">Publications</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+<div class="container">
 
-<!-- HERO SECTION -->
-<section id="home" class="hero">
-  <div class="hero-content">
-    <h1>Hi, I'm Ehtesham 👋</h1>
-    <h2>Business Analyst</h2>
+  <!-- HERO -->
+  <div class="card hero">
+    <h1>Ehtesham Jawid Mohammed</h1>
+    <h3>Business Analyst</h3>
     <p>
-      I build data-driven insights and solutions that help businesses
-      understand their data and make better decisions.
+      I build data-driven insights and solutions that help businesses understand their data 
+      and make better decisions.
     </p>
-    <a href="#contact" class="btn">Get In Touch</a>
   </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about" class="section">
-  <h2>About Me</h2>
-  <p>
-    I’m a Business Analyst who enjoys working with data and understanding business processes 
-    to find useful insights. I focus on using data to improve efficiency, solve problems, 
-    and support better decision-making.
-  </p>
-</section>
+  <!-- ABOUT -->
+  <div class="card">
+    <h2>About Me</h2>
+    <p>
+      I’m a Business Analyst who enjoys working with data and understanding business processes 
+      to find useful insights. I focus on using data to improve efficiency, solve problems, 
+      and support better decision-making.
+    </p>
+  </div>
 
-<!-- PROJECTS -->
-<section id="projects" class="section alt">
-  <h2>Projects</h2>
+  <!-- PROJECTS -->
+  <div class="card projects">
+    <h2>Projects</h2>
 
-  <div class="cards">
-
-    <div class="card">
+    <div class="project-card">
       <h3>Sales Analysis Dashboard</h3>
-      <p>Analyzed sales data and built dashboards to identify trends and improve performance.</p>
+      <p>Analyzed sales data and created dashboards to identify trends and improve performance.</p>
     </div>
 
-    <div class="card">
+    <div class="project-card">
       <h3>Business Process Optimization</h3>
-      <p>Improved workflow efficiency by analyzing and redesigning business processes.</p>
+      <p>Improved workflows by analyzing and redesigning business processes.</p>
     </div>
 
-    <div class="card">
+    <div class="project-card">
       <h3>Customer Insights Report</h3>
-      <p>Extracted insights from customer data to support strategic decisions.</p>
+      <p>Extracted insights from customer data to support strategic decision-making.</p>
     </div>
-
   </div>
-</section>
 
-<!-- PUBLICATIONS -->
-<section id="publications" class="section">
-  <h2>Publications</h2>
-  <p>Add your research papers, blogs, or articles here.</p>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="section alt">
-  <h2>Skills</h2>
-
-  <div class="skills">
-    <span>Excel</span>
-    <span>SQL</span>
-    <span>Python</span>
-    <span>Power BI</span>
-    <span>Tableau</span>
-    <span>Data Analysis</span>
-    <span>Business Analysis</span>
+  <!-- PUBLICATIONS -->
+  <div class="card">
+    <h2>Publications</h2>
+    <p>Add your publications, research, or articles here.</p>
   </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact" class="section">
-  <h2>Contact</h2>
+  <!-- SKILLS -->
+  <div class="card">
+    <h2>Skills</h2>
 
-  <p>Email: mohammedehtesham1901@gmail.com</p>
-  <p>Phone: 773 739 7618</p>
+    <div class="skills">
+      <span>Excel</span>
+      <span>SQL</span>
+      <span>Python</span>
+      <span>Power BI</span>
+      <span>Tableau</span>
+      <span>Data Analysis</span>
+      <span>Business Analysis</span>
+    </div>
+  </div>
 
-  <p>
-    LinkedIn:
-    <a href="https://www.linkedin.com/in/ehtesham-jawid-mohammed-650a37400/" target="_blank">
-      View Profile
-    </a>
-  </p>
+  <!-- CONTACT -->
+  <div class="card">
+    <h2>Contact</h2>
 
-  <p>
-    GitHub:
-    <a href="https://github.com/mohammedehtesham-167" target="_blank">
-      View Profile
-    </a>
-  </p>
-</section>
+    <p>Email: mohammedehtesham1901@gmail.com</p>
+    <p>Phone: 773 739 7618</p>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <p>© 2026 Ehtesham Jawid Mohammed</p>
-</footer>
+    <p>
+      LinkedIn:
+      <a href="https://www.linkedin.com/in/ehtesham-jawid-mohammed-650a37400/" target="_blank">
+        View Profile
+      </a>
+    </p>
+
+    <p>
+      GitHub:
+      <a href="https://github.com/mohammedehtesham-167" target="_blank">
+        View Profile
+      </a>
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2026 Ehtesham Jawid Mohammed
+  </div>
+
+</div>
 
 </body>
 </html>
