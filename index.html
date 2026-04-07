@@ -1,299 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ehtesham Jawid Mohammed | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ehtesham Jawid Mohammed | Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #0f172a;
-      --card: #f1f5f9;
-      --accent: #2563eb;
-    }
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --card: #f1f5f9;
+  --accent: #2563eb;
+}
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0f172a;
-        --text: #e2e8f0;
-        --card: #020617;
-        --accent: #38bdf8;
-      }
-    }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --card: #020617;
+    --accent: #38bdf8;
+  }
+}
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      scroll-behavior: smooth;
-    }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
 
-    .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: auto;
-      padding: 60px 0;
-    }
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 0;
+}
 
-    .hamburger {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      cursor: pointer;
-      z-index: 1000;
-    }
+.hamburger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
 
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: var(--text);
-      margin: 5px;
-    }
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: var(--text);
+  margin: 5px;
+}
 
-    .menu {
-      position: fixed;
-      top: 0;
-      left: -220px;
-      width: 200px;
-      height: 100%;
-      background: var(--card);
-      padding-top: 60px;
-      transition: 0.3s;
-    }
+.menu {
+  position: fixed;
+  top: 0;
+  left: -220px;
+  width: 200px;
+  height: 100%;
+  background: var(--card);
+  padding-top: 60px;
+  transition: 0.3s;
+}
 
-    .menu button {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background: none;
-      border: none;
-      color: var(--text);
-      text-align: left;
-      cursor: pointer;
-    }
+.menu button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: none;
+  text-align: left;
+}
 
-    .menu button:hover {
-      background: var(--accent);
-      color: white;
-    }
+.menu.active {
+  left: 0;
+}
 
-    .menu.active {
-      left: 0;
-    }
+.card {
+  background: var(--card);
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 16px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s;
+}
 
-    .card {
-      background: var(--card);
-      padding: 30px;
-      margin-bottom: 25px;
-      border-radius: 16px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.6s ease;
-    }
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.skills span {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.05);
+}
 
-    h2 {
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-      padding-bottom: 5px;
-    }
+.chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+}
 
-    .skills span {
-      display: inline-block;
-      background: rgba(0,0,0,0.05);
-      padding: 8px 12px;
-      border-radius: 8px;
-      margin: 5px;
-    }
+.chatbox {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: var(--card);
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+}
 
-    @media (prefers-color-scheme: dark) {
-      .skills span {
-        background: #1e293b;
-      }
-    }
+.chat-header {
+  background: var(--accent);
+  color: white;
+  padding: 10px;
+}
 
-    .project-card {
-      background: rgba(0,0,0,0.05);
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
+.chat-body {
+  height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+}
 
-    @media (prefers-color-scheme: dark) {
-      .project-card {
-        background: #1e293b;
-      }
-    }
+.chat-input {
+  display: flex;
+}
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+}
 
-    /* CHATBOT BUTTON */
-    .chat-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--accent);
-      color: white;
-      padding: 12px 18px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 14px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    /* CHATBOX */
-    .chatbox {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      width: 300px;
-      background: var(--card);
-      border-radius: 10px;
-      display: none;
-      flex-direction: column;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      overflow: hidden;
-    }
-
-    .chat-header {
-      background: var(--accent);
-      color: white;
-      padding: 10px;
-      font-size: 14px;
-    }
-
-    .chat-body {
-      padding: 10px;
-      height: 200px;
-      overflow-y: auto;
-      font-size: 13px;
-    }
-
-    .chat-input {
-      display: flex;
-      border-top: 1px solid #ccc;
-    }
-
-    .chat-input input {
-      flex: 1;
-      padding: 8px;
-      border: none;
-      outline: none;
-    }
-
-    .chat-input button {
-      padding: 8px;
-      background: var(--accent);
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+.chat-input button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px;
+}
+</style>
 </head>
 
 <body>
 
-<!-- EXISTING CONTENT UNCHANGED -->
-
 <div class="hamburger" onclick="toggleMenu()">
-  <div></div>
-  <div></div>
-  <div></div>
+<div></div><div></div><div></div>
 </div>
 
 <div id="menu" class="menu">
-  <button onclick="scrollToSection('home')">Home</button>
-  <button onclick="scrollToSection('about')">About</button>
-  <button onclick="scrollToSection('projects')">Projects</button>
-  <button onclick="scrollToSection('publications')">Publications</button>
-  <button onclick="scrollToSection('education')">Education</button>
-  <button onclick="scrollToSection('skills')">Skills</button>
-  <button onclick="scrollToSection('contact')">Contact</button>
+<button onclick="scrollToSection('home')">Home</button>
+<button onclick="scrollToSection('about')">About</button>
+<button onclick="scrollToSection('projects')">Projects</button>
+<button onclick="scrollToSection('education')">Education</button>
+<button onclick="scrollToSection('skills')">Skills</button>
+<button onclick="scrollToSection('contact')">Contact</button>
 </div>
 
 <div class="container">
-  <!-- YOUR CONTENT SAME -->
+
+<div id="home" class="card">
+<h1>Ehtesham Jawid Mohammed</h1>
+<h3>Business Analyst</h3>
+<p>I build data-driven insights and solutions to help businesses make better decisions.</p>
 </div>
 
-<!-- CHAT BUTTON -->
+<div id="about" class="card">
+<h2>About</h2>
+<p>I’m a Business Analyst who enjoys working with data and improving business processes.</p>
+</div>
+
+<div id="projects" class="card">
+<h2>Projects</h2>
+<p>Add your projects here.</p>
+</div>
+
+<div id="education" class="card">
+<h2>Education</h2>
+<p><b>Avila University</b><br>Masters in Business Analytics (2025–2027)</p>
+<p><b>Osmania University</b><br>BBA HR (2020–2023)</p>
+</div>
+
+<div id="skills" class="card">
+<h2>Skills</h2>
+<div class="skills">
+<span>Data Analysis</span>
+<span>SQL</span>
+<span>Power BI</span>
+<span>Tableau</span>
+<span>Excel</span>
+</div>
+</div>
+
+<div id="contact" class="card">
+<h2>Contact</h2>
+<p>Email: mohammedehtesham1901@gmail.com</p>
+<p>Phone: +1 773 739 7618</p>
+</div>
+
+</div>
+
+<!-- CHAT -->
 <div class="chat-btn" onclick="toggleChat()">Ask Me</div>
 
-<!-- CHATBOX -->
 <div id="chatbox" class="chatbox">
-  <div class="chat-header">Ask Me</div>
-  <div id="chatBody" class="chat-body"></div>
-  <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Ask something...">
-    <button onclick="sendMessage()">Send</button>
-  </div>
+<div class="chat-header">Ask Me</div>
+<div id="chatBody" class="chat-body"></div>
+<div class="chat-input">
+<input id="chatInput" placeholder="Ask something...">
+<button onclick="sendMessage()">Send</button>
+</div>
 </div>
 
 <script>
-  function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({
-      behavior: "smooth"
-    });
-  }
+function toggleMenu() {
+document.getElementById("menu").classList.toggle("active");
+}
 
-  function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
-  }
+function scrollToSection(id) {
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
 
-  const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".card");
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting) e.target.classList.add("show");
+});
+});
+cards.forEach(c=>observer.observe(c));
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  }, { threshold: 0.1 });
+function toggleChat(){
+let c=document.getElementById("chatbox");
+c.style.display = c.style.display==="flex"?"none":"flex";
+}
 
-  cards.forEach(card => observer.observe(card));
+function sendMessage(){
+let input=document.getElementById("chatInput");
+let body=document.getElementById("chatBody");
 
-  /* CHATBOT LOGIC */
-  function toggleChat() {
-    const chatbox = document.getElementById("chatbox");
-    chatbox.style.display = chatbox.style.display === "flex" ? "none" : "flex";
-  }
+let msg=input.value;
+if(!msg) return;
 
-  function sendMessage() {
-    const input = document.getElementById("chatInput");
-    const chatBody = document.getElementById("chatBody");
+body.innerHTML+=`<p><b>You:</b> ${msg}</p>`;
 
-    let userText = input.value.trim();
-    if (!userText) return;
+let reply="I can tell you about my skills, education, or contact.";
 
-    chatBody.innerHTML += "<p><strong>You:</strong> " + userText + "</p>";
+if(msg.toLowerCase().includes("skills")) reply="I work with SQL, Power BI, Tableau, Excel.";
+if(msg.toLowerCase().includes("education")) reply="I studied at Avila University and Osmania University.";
+if(msg.toLowerCase().includes("contact")) reply="You can email me or call me from contact section.";
 
-    let reply = "Sorry, I don't understand.";
-
-    if (userText.toLowerCase().includes("name")) {
-      reply = "My name is Ehtesham Jawid Mohammed.";
-    } else if (userText.toLowerCase().includes("skills")) {
-      reply = "I have skills in Data Analysis, SQL, Power BI, Tableau and more.";
-    } else if (userText.toLowerCase().includes("education")) {
-      reply = "I am pursuing Masters in Business Analytics at Avila University.";
-    } else if (userText.toLowerCase().includes("contact")) {
-      reply = "You can contact me via email or phone listed on my portfolio.";
-    }
-
-    chatBody.innerHTML += "<p><strong>Bot:</strong> " + reply + "</p>";
-
-    input.value = "";
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
+body.innerHTML+=`<p><b>Bot:</b> ${reply}</p>`;
+input.value="";
+body.scrollTop=body.scrollHeight;
+}
 </script>
 
 </body>
