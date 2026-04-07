@@ -8,11 +8,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a;
+      --card: #f1f5f9;
+      --accent: #2563eb;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --text: #e2e8f0;
+        --card: #020617;
+        --accent: #38bdf8;
+      }
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      background: var(--bg);
+      color: var(--text);
       scroll-behavior: smooth;
     }
 
@@ -35,7 +51,7 @@
     .hamburger div {
       width: 25px;
       height: 3px;
-      background: white;
+      background: var(--text);
       margin: 5px;
     }
 
@@ -46,7 +62,7 @@
       left: -220px;
       width: 200px;
       height: 100%;
-      background: #020617;
+      background: var(--card);
       padding-top: 60px;
       transition: 0.3s;
     }
@@ -57,14 +73,14 @@
       padding: 12px;
       background: none;
       border: none;
-      color: white;
+      color: var(--text);
       text-align: left;
       cursor: pointer;
     }
 
     .menu button:hover {
-      background: #38bdf8;
-      color: black;
+      background: var(--accent);
+      color: white;
     }
 
     .menu.active {
@@ -72,39 +88,57 @@
     }
 
     .card {
-      background: #020617;
+      background: var(--card);
       padding: 30px;
       margin-bottom: 25px;
       border-radius: 16px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h2 {
-      border-bottom: 2px solid #38bdf8;
+      border-bottom: 2px solid var(--accent);
       display: inline-block;
       padding-bottom: 5px;
     }
 
     .skills span {
       display: inline-block;
-      background: #1e293b;
+      background: rgba(0,0,0,0.05);
       padding: 8px 12px;
       border-radius: 8px;
       margin: 5px;
-      font-size: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .skills span {
+        background: #1e293b;
+      }
     }
 
     .project-card {
-      background: #1e293b;
+      background: rgba(0,0,0,0.05);
       padding: 15px;
       border-radius: 10px;
       margin-top: 10px;
     }
 
-    a {
-      color: #38bdf8;
-      text-decoration: none;
+    @media (prefers-color-scheme: dark) {
+      .project-card {
+        background: #1e293b;
+      }
     }
 
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
   </style>
 </head>
 
@@ -130,7 +164,6 @@
 
 <div class="container">
 
-  <!-- HOME -->
   <div id="home" class="card">
     <h1>Ehtesham Jawid Mohammed</h1>
     <h3>Business Analyst</h3>
@@ -140,7 +173,6 @@
     </p>
   </div>
 
-  <!-- ABOUT -->
   <div id="about" class="card">
     <h2>About Me</h2>
     <p>
@@ -149,7 +181,6 @@
     </p>
   </div>
 
-  <!-- PROJECTS -->
   <div id="projects" class="card">
     <h2>Projects</h2>
 
@@ -164,13 +195,11 @@
     </div>
   </div>
 
-  <!-- PUBLICATIONS -->
   <div id="publications" class="card">
     <h2>Publications</h2>
     <p>Add your publications here.</p>
   </div>
 
-  <!-- EDUCATION -->
   <div id="education" class="card">
     <h2>Education</h2>
 
@@ -183,12 +212,10 @@
     <p>Bachelors of Business Administration (HR) (2020 - 2023)</p>
   </div>
 
-  <!-- SKILLS -->
   <div id="skills" class="card">
     <h2>Skills</h2>
 
     <div class="skills">
-
       <span>Data Analysis</span>
       <span>Critical Thinking</span>
       <span>Problem Solving</span>
@@ -213,11 +240,9 @@
       <span>Risk Analysis</span>
       <span>Financial Analysis</span>
       <span>Domain Knowledge</span>
-
     </div>
   </div>
 
-  <!-- CONTACT -->
   <div id="contact" class="card">
     <h2>Contact</h2>
 
@@ -243,12 +268,26 @@
 
 <script>
   function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    document.getElementById(id).scrollIntoView({
+      behavior: "smooth"
+    });
   }
 
   function toggleMenu() {
     document.getElementById("menu").classList.toggle("active");
   }
+
+  const cards = document.querySelectorAll(".card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => observer.observe(card));
 </script>
 
 </body>
