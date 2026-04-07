@@ -1,58 +1,197 @@
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --card: #f1f5f9;
+  --accent: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --card: #020617;
+    --accent: #38bdf8;
+  }
+}
+
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  background: #f4f4f4;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
 }
 
-header {
-  background: #333;
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 0;
+}
+
+/* HAMBURGER */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: var(--text);
+  margin: 5px;
+}
+
+/* MENU */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -220px;
+  width: 200px;
+  height: 100%;
+  background: var(--card);
+  padding-top: 60px;
+  transition: 0.3s;
+}
+
+.menu button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background: var(--accent);
   color: white;
-  padding: 20px;
-  text-align: center;
 }
 
-section {
-  padding: 20px;
-  margin: 10px;
-  background: white;
+.menu.active {
+  left: 0;
+}
+
+/* CARDS */
+.card {
+  background: var(--card);
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 16px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* SKILLS */
+.skills span {
+  display: inline-block;
+  background: rgba(0,0,0,0.05);
+  padding: 8px 12px;
   border-radius: 8px;
+  margin: 5px;
 }
 
-.project {
+@media (prefers-color-scheme: dark) {
+  .skills span {
+    background: #1e293b;
+  }
+}
+
+/* PROJECT CARD */
+.project-card {
+  background: rgba(0,0,0,0.05);
+  padding: 15px;
+  border-radius: 10px;
   margin-top: 10px;
 }
-<style>
+
+@media (prefers-color-scheme: dark) {
+  .project-card {
+    background: #1e293b;
+  }
+}
+
+/* LINKS */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* CHAT BUTTON */
 .chat-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #38bdf8;
-  color: black;
-  padding: 15px;
-  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 25px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
 
+/* CHAT BOX */
 .chatbox {
   position: fixed;
   bottom: 80px;
   right: 20px;
   width: 300px;
-  background: white;
-  color: black;
-  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  border-radius: 12px;
   display: none;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  animation: popup 0.3s ease;
+  z-index: 1000;
+}
+
+@keyframes popup {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .chat-header {
-  background: #38bdf8;
+  background: var(--accent);
+  color: white;
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
 .chat-messages {
@@ -64,17 +203,20 @@ section {
 
 .chat-input {
   display: flex;
+  border-top: 1px solid #ccc;
 }
 
 .chat-input input {
   flex: 1;
-  padding: 8px;
+  padding: 10px;
   border: none;
+  outline: none;
 }
 
 .chat-input button {
-  padding: 8px;
-  background: #38bdf8;
+  padding: 10px;
+  background: var(--accent);
   border: none;
+  color: white;
+  cursor: pointer;
 }
-</style>
