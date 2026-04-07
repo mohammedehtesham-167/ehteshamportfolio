@@ -20,23 +20,44 @@
     .container {
       width: 90%;
       max-width: 1000px;
-      padding: 40px 0;
+      padding: 30px 0;
+    }
+
+    .nav-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .nav-buttons button {
+      background: #1e293b;
+      color: #e2e8f0;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nav-buttons button:hover {
+      background: #38bdf8;
+      color: black;
     }
 
     .card {
       background: #020617;
       padding: 30px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      display: none;
+    }
+
+    .active {
+      display: block;
     }
 
     h1, h2 {
       margin-bottom: 15px;
-    }
-
-    h1 {
-      font-size: 36px;
     }
 
     h2 {
@@ -50,10 +71,6 @@
       color: #cbd5f5;
     }
 
-    .hero {
-      text-align: center;
-    }
-
     .skills span {
       display: inline-block;
       background: #1e293b;
@@ -63,7 +80,7 @@
       font-size: 14px;
     }
 
-    .projects .project-card {
+    .project-card {
       background: #1e293b;
       padding: 15px;
       border-radius: 10px;
@@ -75,17 +92,6 @@
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-      color: #94a3b8;
-    }
-
   </style>
 </head>
 
@@ -93,8 +99,19 @@
 
 <div class="container">
 
-  <!-- HERO -->
-  <div class="card hero">
+  <!-- NAV BUTTONS -->
+  <div class="nav-buttons">
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('about')">About</button>
+    <button onclick="showSection('projects')">Projects</button>
+    <button onclick="showSection('publications')">Publications</button>
+    <button onclick="showSection('education')">Education</button>
+    <button onclick="showSection('skills')">Skills</button>
+    <button onclick="showSection('contact')">Contact</button>
+  </div>
+
+  <!-- HOME -->
+  <div id="home" class="card active">
     <h1>Ehtesham Jawid Mohammed</h1>
     <h3>Business Analyst</h3>
     <p>
@@ -104,7 +121,7 @@
   </div>
 
   <!-- ABOUT -->
-  <div class="card">
+  <div id="about" class="card">
     <h2>About Me</h2>
     <p>
       I’m a Business Analyst who enjoys working with data and understanding business processes 
@@ -114,7 +131,7 @@
   </div>
 
   <!-- PROJECTS -->
-  <div class="card projects">
+  <div id="projects" class="card">
     <h2>Projects</h2>
 
     <div class="project-card">
@@ -126,21 +143,29 @@
       <h3>Business Process Optimization</h3>
       <p>Improved workflows by analyzing and redesigning business processes.</p>
     </div>
-
-    <div class="project-card">
-      <h3>Customer Insights Report</h3>
-      <p>Extracted insights from customer data to support strategic decision-making.</p>
-    </div>
   </div>
 
   <!-- PUBLICATIONS -->
-  <div class="card">
+  <div id="publications" class="card">
     <h2>Publications</h2>
-    <p>Add your publications, research, or articles here.</p>
+    <p>Add your publications here.</p>
+  </div>
+
+  <!-- EDUCATION -->
+  <div id="education" class="card">
+    <h2>Education</h2>
+
+    <p><strong>Avila University</strong></p>
+    <p>Masters in Business Analytics (2025 - 2027)</p>
+
+    <br>
+
+    <p><strong>Osmania University</strong></p>
+    <p>Bachelors of Business Administration (HR)</p>
   </div>
 
   <!-- SKILLS -->
-  <div class="card">
+  <div id="skills" class="card">
     <h2>Skills</h2>
 
     <div class="skills">
@@ -150,12 +175,11 @@
       <span>Power BI</span>
       <span>Tableau</span>
       <span>Data Analysis</span>
-      <span>Business Analysis</span>
     </div>
   </div>
 
   <!-- CONTACT -->
-  <div class="card">
+  <div id="contact" class="card">
     <h2>Contact</h2>
 
     <p>Email: mohammedehtesham1901@gmail.com</p>
@@ -176,12 +200,16 @@
     </p>
   </div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    © 2026 Ehtesham Jawid Mohammed
-  </div>
-
 </div>
+
+<script>
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('.card');
+    sections.forEach(section => section.classList.remove('active'));
+
+    document.getElementById(sectionId).classList.add('active');
+  }
+</script>
 
 </body>
 </html>
